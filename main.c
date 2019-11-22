@@ -1,7 +1,13 @@
 #include <stdio.h>
-
+#include <stdlib.h>
 const int size = 4;
+const int M[][4] = {
+{2,3,1,1},
+{1,2,3,1},
+{1,1,2,3},
+{3,1,1,2}
 
+};
 void PrintArray(int m[][size]);
 
 void ShiftRows(int arr[][size]){
@@ -17,6 +23,29 @@ void ShiftRows(int arr[][size]){
 	PrintArray(arr);
 }
 
+void MixColumns(int arr[][size]){
+
+	int i,j,k,value;
+
+	for(i = 0;i < size;i++)
+	{
+		for(j = 0;j < size;j++)
+		{
+			value = 0;
+			for(k = 0;k < size;k++)
+			{
+
+			value += M[j][k] * arr[k][i];
+			//printf("%d * %d \n",M[j][k],arr[k][i]);
+			}
+		printf("%d ",value);
+		}
+	//exit(1);
+	}
+
+
+}
+
 void PrintArray(int m[][size]){
 
 	for(int i = 0;i < size;i++){
@@ -28,16 +57,13 @@ void PrintArray(int m[][size]){
 int main(){
 
 	int arr[][4] = {
-	{0,1,2,3},
-	{4,5,6,7},
-	{8,9,10,11},
-	{12,13,14,15}
+		{0,1,2,3},
+		{4,5,6,7},
+		{8,9,10,11},
+		{12,13,14,15}
 	};
 
-	printf("The matrix before the rotation: \n");
-	PrintArray(arr);
-	printf("\nThe array after the rotation: \n");
-	ShiftRows(arr);
+	MixColumns(arr);
 	return 0;
 
 }
